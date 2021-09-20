@@ -146,8 +146,8 @@ If specified - validates the token pair
 
 {% endapi-method-response-example-description %}
 
-```
-
+```javascript
+{ "value": true }
 ```
 {% endapi-method-response-example %}
 {% endapi-method-response %}
