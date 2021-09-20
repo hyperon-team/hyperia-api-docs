@@ -58,11 +58,15 @@ Refreshes the token pair and returns a new one
 
 {% api-method-spec %}
 {% api-method-request %}
-{% api-method-path-parameters %}
-{% api-method-parameter name="" type="string" required=false %}
-
+{% api-method-body-parameters %}
+{% api-method-parameter name="accessToken" type="string" required=false %}
+Access token to refresh
 {% endapi-method-parameter %}
-{% endapi-method-path-parameters %}
+
+{% api-method-parameter name="refreshToken" type="string" required=true %}
+Refresh token to refresh the token pair
+{% endapi-method-parameter %}
+{% endapi-method-body-parameters %}
 {% endapi-method-request %}
 
 {% api-method-response %}
@@ -71,8 +75,11 @@ Refreshes the token pair and returns a new one
 
 {% endapi-method-response-example-description %}
 
-```
-
+```javascript
+{
+    "accessToken": "YOUR-NEW-ACCESS-TOKEN",
+    "refreshToken": "YOUR-NEW-REFRESH-TOKEN"
+}
 ```
 {% endapi-method-response-example %}
 {% endapi-method-response %}
@@ -108,10 +115,7 @@ Refresh token to revoke
 {% endapi-method-response-example-description %}
 
 ```javascript
-{
-    "accessToken": "YOUR-NEW-ACCESS-TOKEN",
-    "refreshToken": "YOUR-NEW-REFRESH-TOKEN"
-}
+{}
 ```
 {% endapi-method-response-example %}
 {% endapi-method-response %}
