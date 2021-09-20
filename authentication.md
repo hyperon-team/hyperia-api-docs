@@ -47,7 +47,7 @@ User password
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="put" host="https://api.hyperia.space" path="/v1/auth/refresh" %}
+{% api-method method="put" host="https://api.hyperia.space" path="/auth/v1/refresh" %}
 {% api-method-summary %}
 Refresh token pair
 {% endapi-method-summary %}
