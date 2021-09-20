@@ -4,7 +4,7 @@ description: Community-related endpoints.
 
 # Endpoints
 
-{% api-method method="post" host="https://api.hyperia.space" path="/communities/new" %}
+{% api-method method="post" host="https://api.hyperia.space" path="/communities/v1/new" %}
 {% api-method-summary %}
 Create a community
 {% endapi-method-summary %}
@@ -60,7 +60,7 @@ Id of newly created community
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="https://api.hyperia.space" path="/communities/:id" %}
+{% api-method method="get" host="https://api.hyperia.space" path="/communities/v1/:id" %}
 {% api-method-summary %}
 Get a community
 {% endapi-method-summary %}
@@ -104,7 +104,7 @@ Community exists and retrieved.
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="put" host="https://api.hyperia.space" path="/communities/:id" %}
+{% api-method method="put" host="https://api.hyperia.space" path="/communities/v1/:id" %}
 {% api-method-summary %}
 Update a community
 {% endapi-method-summary %}
@@ -183,7 +183,7 @@ Community info before the update \(with \`old\_\` prefix in a field\) and update
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="delete" host="https://api.hyperia.space" path="/communities/:id" %}
+{% api-method method="delete" host="https://api.hyperia.space" path="/communities/v1/:id" %}
 {% api-method-summary %}
 Delete community
 {% endapi-method-summary %}
@@ -227,7 +227,7 @@ Community info before the deletion
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="put" host="https://api.hyperia.space" path="/communities/:id/transfer" %}
+{% api-method method="put" host="https://api.hyperia.space" path="/communities/v1/:id/transfer" %}
 {% api-method-summary %}
 Transfer ownership
 {% endapi-method-summary %}
