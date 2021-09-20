@@ -8,7 +8,7 @@ description: >-
 
 ## Endpoints
 
-{% api-method method="post" host="https://api.hyperia.space" path="/v1/login" %}
+{% api-method method="post" host="https://api.hyperia.space" path="/auth/v1/login" %}
 {% api-method-summary %}
 Authenticate
 {% endapi-method-summary %}
