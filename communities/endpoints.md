@@ -4,92 +4,66 @@ description: Community-related endpoints.
 
 # Endpoints
 
-{% api-method method="post" host="https://api.hyperia.space" path="/communities/v1/new" %}
-{% api-method-summary %}
-Create a community
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.hyperia.space" path="/communities/v1/new" method="post" summary="Create a community" %}
+{% swagger-description %}
 Creates a new community
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-headers %}
-{% api-method-parameter name="Authorization" type="string" required=false %}
+{% swagger-parameter name="Authorization" type="string" in="header" %}
 Authentication token to acknowledge who is creating the community
-{% endapi-method-parameter %}
-{% endapi-method-headers %}
+{% endswagger-parameter %}
 
-{% api-method-body-parameters %}
-{% api-method-parameter name="name" type="string" required=true %}
+{% swagger-parameter name="name" type="string" in="body" %}
 Community name.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="desc" type="string" required=true %}
+{% swagger-parameter name="desc" type="string" in="body" %}
 Community description.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="kind" type="integer" required=true %}
+{% swagger-parameter name="kind" type="integer" in="body" %}
 Community kind
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="link" type="string" required=true %}
+{% swagger-parameter name="link" type="string" in="body" %}
 Link to the community.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="avatar\_url" type="string" required=false %}
-Community's avatar. If left blank, fetches avatar automatically based on `kind` \(platform\). Or if `kind`set to custom website, uses default avatar.
-{% endapi-method-parameter %}
-{% endapi-method-body-parameters %}
-{% endapi-method-request %}
+{% swagger-parameter name="avatar:url" type="string" in="body" %}
+Community's avatar. If left blank, fetches avatar automatically based on 
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-Id of newly created community
-{% endapi-method-response-example-description %}
+`kind`
 
+ (platform). Or if 
+
+`kind`
+
+set to custom website, uses default avatar.
+{% endswagger-parameter %}
+
+{% swagger-response status="200" description="" %}
 ```javascript
 {
     "id": "795aeb50-1b48-4aae-8700-8d9101845741"
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="get" host="https://api.hyperia.space" path="/communities/v1/:id" %}
-{% api-method-summary %}
-Get a community
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.hyperia.space" path="/communities/v1/:id" method="get" summary="Get a community" %}
+{% swagger-description %}
 Retrieves the community by given id.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-path-parameters %}
-{% api-method-parameter name="id" type="string" required=true %}
+{% swagger-parameter name="id" type="string" in="path" %}
 Community id
-{% endapi-method-parameter %}
-{% endapi-method-path-parameters %}
+{% endswagger-parameter %}
 
-{% api-method-headers %}
-{% api-method-parameter name="Authorization" type="string" required=false %}
+{% swagger-parameter name="Authorization" type="string" in="header" %}
 Authentication token to identify who is making the request
-{% endapi-method-parameter %}
-{% endapi-method-headers %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-Community exists and retrieved.
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```javascript
 {
     "name": "Server-Discord.com",
@@ -99,73 +73,51 @@ Community exists and retrieved.
     "kind": 5
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="put" host="https://api.hyperia.space" path="/communities/v1/:id" %}
-{% api-method-summary %}
-Update a community
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.hyperia.space" path="/communities/v1/:id" method="put" summary="Update a community" %}
+{% swagger-description %}
 Updates community and returns changes.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-path-parameters %}
-{% api-method-parameter name="id" type="string" required=true %}
+{% swagger-parameter name="id" type="string" in="path" %}
 Community id
-{% endapi-method-parameter %}
-{% endapi-method-path-parameters %}
+{% endswagger-parameter %}
 
-{% api-method-headers %}
-{% api-method-parameter name="Authorization" type="string" required=true %}
+{% swagger-parameter name="Authorization" type="string" in="header" %}
 Authentication token to identify the user updating the community
-{% endapi-method-parameter %}
-{% endapi-method-headers %}
+{% endswagger-parameter %}
 
-{% api-method-query-parameters %}
-{% api-method-parameter name="avoid\_empty" type="boolean" required=false %}
+{% swagger-parameter name="avoid:empty" type="boolean" in="query" %}
 Avoids empty fields in the request. Otherwise the endpoint will throw a error if field has incorrect value or empty.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="include\_changed" type="boolean" required=false %}
+{% swagger-parameter name="include:changed" type="boolean" in="query" %}
 Include only changed fields in the response
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
+{% endswagger-parameter %}
 
-{% api-method-body-parameters %}
-{% api-method-parameter name="name" type="string" required=false %}
+{% swagger-parameter name="name" type="string" in="body" %}
 New community name
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="desc" type="string" required=false %}
+{% swagger-parameter name="desc" type="string" in="body" %}
 New community description
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="kind" type="integer" required=false %}
+{% swagger-parameter name="kind" type="integer" in="body" %}
 New community kind
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="link" type="string" required=false %}
+{% swagger-parameter name="link" type="string" in="body" %}
 New community link
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="avatar\_url" type="string" required=false %}
+{% swagger-parameter name="avatar:url" type="string" in="body" %}
 New community avatar
-{% endapi-method-parameter %}
-{% endapi-method-body-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-Community info before the update \(with \`old\_\` prefix in a field\) and updated info. If \`include\_changed\` is \`true\` - includes only changed field pairs.
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```javascript
 {
     "old_name": "Old community name",
@@ -178,41 +130,23 @@ Community info before the update \(with \`old\_\` prefix in a field\) and update
     "new_kind": 2
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="delete" host="https://api.hyperia.space" path="/communities/v1/:id" %}
-{% api-method-summary %}
-Delete community
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.hyperia.space" path="/communities/v1/:id" method="delete" summary="Delete community" %}
+{% swagger-description %}
 Deletes the community and returns it's info
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-path-parameters %}
-{% api-method-parameter name="id" type="string" required=true %}
+{% swagger-parameter name="id" type="string" in="path" %}
 Community id to delete
-{% endapi-method-parameter %}
-{% endapi-method-path-parameters %}
+{% endswagger-parameter %}
 
-{% api-method-headers %}
-{% api-method-parameter name="Authorization" type="string" required=true %}
+{% swagger-parameter name="Authorization" type="string" in="header" %}
 Authentication token to acknowledge who deletes the community
-{% endapi-method-parameter %}
-{% endapi-method-headers %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-Community info before the deletion
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```javascript
 {
     "name": "Community name",
@@ -222,55 +156,32 @@ Community info before the deletion
     "kind": 1
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="put" host="https://api.hyperia.space" path="/communities/v1/:id/transfer" %}
-{% api-method-summary %}
-Transfer ownership
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.hyperia.space" path="/communities/v1/:id/transfer" method="put" summary="Transfer ownership" %}
+{% swagger-description %}
 Transfers ownership of the community. Returns old and new owner IDs.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-path-parameters %}
-{% api-method-parameter name="id" type="string" required=true %}
+{% swagger-parameter name="id" type="string" in="path" %}
 Community id to transfer ownership of
-{% endapi-method-parameter %}
-{% endapi-method-path-parameters %}
+{% endswagger-parameter %}
 
-{% api-method-headers %}
-{% api-method-parameter name="Authorization" type="string" required=true %}
+{% swagger-parameter name="Authorization" type="string" in="header" %}
 Authentication token to authorize the owner of the community
-{% endapi-method-parameter %}
-{% endapi-method-headers %}
+{% endswagger-parameter %}
 
-{% api-method-body-parameters %}
-{% api-method-parameter name="new\_owner" type="string" required=true %}
+{% swagger-parameter name="new:owner" type="string" in="body" %}
 Id of new community owner
-{% endapi-method-parameter %}
-{% endapi-method-body-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```javascript
 {
     "old_owner": "old-owner-id",
     "owner": "new-owner-id"
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
-
+{% endswagger-response %}
+{% endswagger %}

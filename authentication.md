@@ -8,153 +8,88 @@ description: >-
 
 ## Endpoints
 
-{% api-method method="post" host="https://api.hyperia.space" path="/auth/v1/login" %}
-{% api-method-summary %}
-Authenticate
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.hyperia.space" path="/auth/v1/login" method="post" summary="Authenticate" %}
+{% swagger-description %}
 Checks credentials and returns the token pair
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-body-parameters %}
-{% api-method-parameter name="nick" type="string" required=true %}
+{% swagger-parameter name="nick" type="string" in="body" %}
 User nickname
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="password" type="string" required=true %}
+{% swagger-parameter name="password" type="string" in="body" %}
 User password
-{% endapi-method-parameter %}
-{% endapi-method-body-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```javascript
 {
     "accessToken": "YOUR-ACCESS-TOKEN",
     "refreshToken": "YOUR-REFRESH-TOKEN"
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="put" host="https://api.hyperia.space" path="/auth/v1/refresh" %}
-{% api-method-summary %}
-Refresh token pair
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.hyperia.space" path="/auth/v1/refresh" method="put" summary="Refresh token pair" %}
+{% swagger-description %}
 Refreshes the token pair and returns a new one
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-body-parameters %}
-{% api-method-parameter name="accessToken" type="string" required=false %}
+{% swagger-parameter name="accessToken" type="string" in="body" %}
 Access token to refresh
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="refreshToken" type="string" required=true %}
+{% swagger-parameter name="refreshToken" type="string" in="body" %}
 Refresh token to refresh the token pair
-{% endapi-method-parameter %}
-{% endapi-method-body-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```javascript
 {
     "accessToken": "YOUR-NEW-ACCESS-TOKEN",
     "refreshToken": "YOUR-NEW-REFRESH-TOKEN"
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="post" host="https://api.hyperia.space" path="/auth/v1/revoke" %}
-{% api-method-summary %}
-Revoke token pair
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.hyperia.space" path="/auth/v1/revoke" method="post" summary="Revoke token pair" %}
+{% swagger-description %}
 Revokes the token pair
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-body-parameters %}
-{% api-method-parameter name="accessToken" type="string" required=true %}
+{% swagger-parameter name="accessToken" type="string" in="body" %}
 Access token to revoke
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="refreshToken" type="string" required=true %}
+{% swagger-parameter name="refreshToken" type="string" in="body" %}
 Refresh token to revoke
-{% endapi-method-parameter %}
-{% endapi-method-body-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```javascript
 {}
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="get" host="https://api.hyperia.space" path="/auth/v1/validate" %}
-{% api-method-summary %}
-Validate
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.hyperia.space" path="/auth/v1/validate" method="get" summary="Validate" %}
+{% swagger-description %}
 Validates the token and returns the results
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="accessToken" type="string" required=true %}
+{% swagger-parameter name="accessToken" type="string" in="query" %}
 Access token to validate
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="refreshToken" type="string" required=false %}
+{% swagger-parameter name="refreshToken" type="string" in="query" %}
 If specified - validates the token pair
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```javascript
 { "value": true }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
-
+{% endswagger-response %}
+{% endswagger %}
