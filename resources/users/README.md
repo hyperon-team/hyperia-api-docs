@@ -1,15 +1,17 @@
 ---
-description: User-related endpoints
+description: >-
+  Users are key component of building basically any system now. Here is
+  described everything you need to know about users resource.
 ---
 
-# Endpoints
+# Users
 
 {% swagger baseUrl="https://api.hyperia.space" path="/users/v1/:id" method="get" summary="Get user by ID" %}
 {% swagger-description %}
 Get user info by his ID
 {% endswagger-description %}
 
-{% swagger-parameter name="id" type="string" in="path" %}
+{% swagger-parameter name="id" type="string" in="path" required="false" %}
 ID of the user to retrieve
 {% endswagger-parameter %}
 
@@ -30,11 +32,11 @@ ID of the user to retrieve
 Deletes the user and returns user's info before deletion
 {% endswagger-description %}
 
-{% swagger-parameter name="id" type="string" in="path" %}
+{% swagger-parameter name="id" type="string" in="path" required="false" %}
 ID of the user to delete
 {% endswagger-parameter %}
 
-{% swagger-parameter name="Authorization" type="string" in="header" %}
+{% swagger-parameter name="Authorization" type="string" in="header" required="false" %}
 Authentication token to acknowledge who is deleting the user
 {% endswagger-parameter %}
 
@@ -55,39 +57,39 @@ Authentication token to acknowledge who is deleting the user
 Updates the user info and returns the old one
 {% endswagger-description %}
 
-{% swagger-parameter name="id" type="string" in="path" %}
+{% swagger-parameter name="id" type="string" in="path" required="false" %}
 ID of the user to update
 {% endswagger-parameter %}
 
-{% swagger-parameter name="Authorization" type="string" in="header" %}
+{% swagger-parameter name="Authorization" type="string" in="header" required="false" %}
 Authentication token to acknowledge who is making updates to the user
 {% endswagger-parameter %}
 
-{% swagger-parameter name="avoidEmpty" type="boolean" in="query" %}
+{% swagger-parameter name="avoidEmpty" type="boolean" in="query" required="false" %}
 Avoid empty fields. If is false or not set the endpoint will make sure every single field is filled
 {% endswagger-parameter %}
 
-{% swagger-parameter name="includeChanged" type="boolean" in="query" %}
+{% swagger-parameter name="includeChanged" type="boolean" in="query" required="false" %}
 If set to true, the endpoint includes only changed fields in the response
 {% endswagger-parameter %}
 
-{% swagger-parameter name="nick" type="string" in="body" %}
+{% swagger-parameter name="nick" type="string" in="body" required="false" %}
 New user nickname, must be unique
 {% endswagger-parameter %}
 
-{% swagger-parameter name="email" type="string" in="body" %}
+{% swagger-parameter name="email" type="string" in="body" required="false" %}
 New user email
 {% endswagger-parameter %}
 
-{% swagger-parameter name="password" type="string" in="body" %}
+{% swagger-parameter name="password" type="string" in="body" required="false" %}
 Updated user password.
 {% endswagger-parameter %}
 
-{% swagger-parameter name="avatarUrl" type="string" in="body" %}
+{% swagger-parameter name="avatarUrl" type="string" in="body" required="false" %}
 Updated avatar URL
 {% endswagger-parameter %}
 
-{% swagger-parameter name="perms" type="string" in="body" %}
+{% swagger-parameter name="perms" type="string" in="body" required="false" %}
 Updated user permissions
 {% endswagger-parameter %}
 

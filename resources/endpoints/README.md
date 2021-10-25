@@ -1,40 +1,42 @@
 ---
-description: Community-related endpoints.
+description: >-
+  Community is an atomic entity in our API. It represents a Discord server put
+  on Hyperia, for advertisement and gathering of even more people!
 ---
 
-# Endpoints
+# Communities
 
 {% swagger baseUrl="https://api.hyperia.space" path="/communities/v1/new" method="post" summary="Create a community" %}
 {% swagger-description %}
 Creates a new community
 {% endswagger-description %}
 
-{% swagger-parameter name="Authorization" type="string" in="header" %}
+{% swagger-parameter name="Authorization" type="string" in="header" required="false" %}
 Authentication token to acknowledge who is creating the community
 {% endswagger-parameter %}
 
-{% swagger-parameter name="name" type="string" in="body" %}
+{% swagger-parameter name="name" type="string" in="body" required="false" %}
 Community name.
 {% endswagger-parameter %}
 
-{% swagger-parameter name="desc" type="string" in="body" %}
+{% swagger-parameter name="desc" type="string" in="body" required="false" %}
 Community description.
 {% endswagger-parameter %}
 
-{% swagger-parameter name="kind" type="integer" in="body" %}
+{% swagger-parameter name="kind" type="integer" in="body" required="false" %}
 Community kind
 {% endswagger-parameter %}
 
-{% swagger-parameter name="link" type="string" in="body" %}
+{% swagger-parameter name="link" type="string" in="body" required="false" %}
 Link to the community.
 {% endswagger-parameter %}
 
-{% swagger-parameter name="avatar:url" type="string" in="body" %}
-Community's avatar. If left blank, fetches avatar automatically based on 
+{% swagger-parameter name="avatar:url" type="string" in="body" required="false" %}
+Community's avatar. If left blank, fetches avatar automatically based on
 
 `kind`
 
- (platform). Or if 
+(platform). Or if
 
 `kind`
 
@@ -55,11 +57,11 @@ set to custom website, uses default avatar.
 Retrieves the community by given id.
 {% endswagger-description %}
 
-{% swagger-parameter name="id" type="string" in="path" %}
+{% swagger-parameter name="id" type="string" in="path" required="false" %}
 Community id
 {% endswagger-parameter %}
 
-{% swagger-parameter name="Authorization" type="string" in="header" %}
+{% swagger-parameter name="Authorization" type="string" in="header" required="false" %}
 Authentication token to identify who is making the request
 {% endswagger-parameter %}
 
@@ -81,39 +83,39 @@ Authentication token to identify who is making the request
 Updates community and returns changes.
 {% endswagger-description %}
 
-{% swagger-parameter name="id" type="string" in="path" %}
+{% swagger-parameter name="id" type="string" in="path" required="false" %}
 Community id
 {% endswagger-parameter %}
 
-{% swagger-parameter name="Authorization" type="string" in="header" %}
+{% swagger-parameter name="Authorization" type="string" in="header" required="false" %}
 Authentication token to identify the user updating the community
 {% endswagger-parameter %}
 
-{% swagger-parameter name="avoid:empty" type="boolean" in="query" %}
+{% swagger-parameter name="avoid:empty" type="boolean" in="query" required="false" %}
 Avoids empty fields in the request. Otherwise the endpoint will throw a error if field has incorrect value or empty.
 {% endswagger-parameter %}
 
-{% swagger-parameter name="include:changed" type="boolean" in="query" %}
+{% swagger-parameter name="include:changed" type="boolean" in="query" required="false" %}
 Include only changed fields in the response
 {% endswagger-parameter %}
 
-{% swagger-parameter name="name" type="string" in="body" %}
+{% swagger-parameter name="name" type="string" in="body" required="false" %}
 New community name
 {% endswagger-parameter %}
 
-{% swagger-parameter name="desc" type="string" in="body" %}
+{% swagger-parameter name="desc" type="string" in="body" required="false" %}
 New community description
 {% endswagger-parameter %}
 
-{% swagger-parameter name="kind" type="integer" in="body" %}
+{% swagger-parameter name="kind" type="integer" in="body" required="false" %}
 New community kind
 {% endswagger-parameter %}
 
-{% swagger-parameter name="link" type="string" in="body" %}
+{% swagger-parameter name="link" type="string" in="body" required="false" %}
 New community link
 {% endswagger-parameter %}
 
-{% swagger-parameter name="avatar:url" type="string" in="body" %}
+{% swagger-parameter name="avatar:url" type="string" in="body" required="false" %}
 New community avatar
 {% endswagger-parameter %}
 
@@ -138,11 +140,11 @@ New community avatar
 Deletes the community and returns it's info
 {% endswagger-description %}
 
-{% swagger-parameter name="id" type="string" in="path" %}
+{% swagger-parameter name="id" type="string" in="path" required="false" %}
 Community id to delete
 {% endswagger-parameter %}
 
-{% swagger-parameter name="Authorization" type="string" in="header" %}
+{% swagger-parameter name="Authorization" type="string" in="header" required="false" %}
 Authentication token to acknowledge who deletes the community
 {% endswagger-parameter %}
 
@@ -164,15 +166,15 @@ Authentication token to acknowledge who deletes the community
 Transfers ownership of the community. Returns old and new owner IDs.
 {% endswagger-description %}
 
-{% swagger-parameter name="id" type="string" in="path" %}
+{% swagger-parameter name="id" type="string" in="path" required="false" %}
 Community id to transfer ownership of
 {% endswagger-parameter %}
 
-{% swagger-parameter name="Authorization" type="string" in="header" %}
+{% swagger-parameter name="Authorization" type="string" in="header" required="false" %}
 Authentication token to authorize the owner of the community
 {% endswagger-parameter %}
 
-{% swagger-parameter name="new:owner" type="string" in="body" %}
+{% swagger-parameter name="new:owner" type="string" in="body" required="false" %}
 Id of new community owner
 {% endswagger-parameter %}
 
