@@ -1,7 +1,6 @@
 # Table of contents
 
 * [Intro](README.md)
-* [Intro](<README (1).md>)
 
 ## Communities
 
