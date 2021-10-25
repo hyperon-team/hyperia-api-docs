@@ -6,16 +6,18 @@ description: >-
 
 # Users
 
-{% swagger baseUrl="https://api.hyperia.space" path="/users/v1/:id" method="get" summary="Get user by ID" %}
+{% swagger baseUrl="https://api.hyperia.space" path="/users/v1/:id" method="get" summary="Get user" %}
 {% swagger-description %}
-Get user info by his ID
+Request user information by the 
+
+`id`
 {% endswagger-description %}
 
-{% swagger-parameter name="id" type="string" in="path" required="false" %}
+{% swagger-parameter name="id" type="string" in="path" required="true" %}
 ID of the user to retrieve
 {% endswagger-parameter %}
 
-{% swagger-response status="200" description="" %}
+{% swagger-response status="200" description="Request is successful" %}
 ```javascript
 {
     "id": "user-id",
@@ -27,37 +29,24 @@ ID of the user to retrieve
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger baseUrl="https://api.hyperia.space" path="/users/v1/:id" method="delete" summary="Delete user" %}
-{% swagger-description %}
-Deletes the user and returns user's info before deletion
-{% endswagger-description %}
+{% hint style="info" %}
+The update endpoint requires `MANAGE_USERS` permission if the authorized user isn't the account owner.
+{% endhint %}
 
-{% swagger-parameter name="id" type="string" in="path" required="false" %}
-ID of the user to delete
-{% endswagger-parameter %}
+{% hint style="warning" %}
+The `password` field is accessible only if the authorized user is the account owner. Otherwise fires `CANNOT_CHANGE_USER_PASSWORD` error.
+{% endhint %}
 
-{% swagger-parameter name="Authorization" type="string" in="header" required="false" %}
-Authentication token to acknowledge who is deleting the user
-{% endswagger-parameter %}
-
-{% swagger-response status="200" description="" %}
-```javascript
-{
-    "id": "user-id",
-    "nick": "MegaVasily007",
-    "email": "admin@mail.sdc.su",
-    "perms": 0
-}
-```
-{% endswagger-response %}
-{% endswagger %}
+{% hint style="warning" %}
+The `perms` field requires authorized user to have `MANAGE_PERMISSIONS permission. If `authorized user lacks it, fires `CANNOT_CHANGE_USER_PERMISSIONS` error.
+{% endhint %}
 
 {% swagger baseUrl="https://api.hyperia.space" path="/users/v1/:id" method="put" summary="Update user" %}
 {% swagger-description %}
 Updates the user info and returns the old one
 {% endswagger-description %}
 
-{% swagger-parameter name="id" type="string" in="path" required="false" %}
+{% swagger-parameter name="id" type="string" in="path" required="true" %}
 ID of the user to update
 {% endswagger-parameter %}
 
@@ -70,19 +59,19 @@ Avoid empty fields. If is false or not set the endpoint will make sure every sin
 {% endswagger-parameter %}
 
 {% swagger-parameter name="includeChanged" type="boolean" in="query" required="false" %}
-If set to true, the endpoint includes only changed fields in the response
+If is set and true, the endpoint includes only changed fields in the response
 {% endswagger-parameter %}
 
-{% swagger-parameter name="nick" type="string" in="body" required="false" %}
+{% swagger-parameter name="nick" type="string" in="body" required="true" %}
 New user nickname, must be unique
 {% endswagger-parameter %}
 
-{% swagger-parameter name="email" type="string" in="body" required="false" %}
+{% swagger-parameter name="email" type="string" in="body" required="true" %}
 New user email
 {% endswagger-parameter %}
 
-{% swagger-parameter name="password" type="string" in="body" required="false" %}
-Updated user password.
+{% swagger-parameter name="password" type="string" in="body" required="true" %}
+Updated user password
 {% endswagger-parameter %}
 
 {% swagger-parameter name="avatarUrl" type="string" in="body" required="false" %}
@@ -93,7 +82,7 @@ Updated avatar URL
 Updated user permissions
 {% endswagger-parameter %}
 
-{% swagger-response status="200" description="" %}
+{% swagger-response status="200" description="Update was successful" %}
 ```
 {
     "id": "user-id",
@@ -105,14 +94,31 @@ Updated user permissions
 {% endswagger-response %}
 {% endswagger %}
 
-{% hint style="info" %}
-This endpoint requires `MANAGE_USERS` permission if the authorized user isn't the account owner.
-{% endhint %}
+{% swagger baseUrl="https://api.hyperia.space" path="/users/v1/:id" method="delete" summary="Delete user" %}
+{% swagger-description %}
+Deletes the user specified by 
 
-{% hint style="warning" %}
-The `password` field is accessible only if the authorized user is the account owner. Otherwise fires `CANNOT_CHANGE_USER_PASSWORD` error.
-{% endhint %}
+`id`
 
-{% hint style="warning" %}
-The `perms` field requires authorized user to have `MANAGE_PERMISSIONS permission.`If authorized user lacks it, fires `CANNOT_CHANGE_USER_PERMISSIONS` error.
-{% endhint %}
+ and returns the user info
+{% endswagger-description %}
+
+{% swagger-parameter name="id" type="string" in="path" required="true" %}
+ID of the user to delete
+{% endswagger-parameter %}
+
+{% swagger-parameter name="Authorization" type="string" in="header" required="true" %}
+Authentication token to acknowledge who is deleting the user
+{% endswagger-parameter %}
+
+{% swagger-response status="200" description="Deletion is successful" %}
+```javascript
+{
+    "id": "user-id",
+    "nick": "MegaVasily007",
+    "email": "admin@mail.sdc.su",
+    "perms": 0
+}
+```
+{% endswagger-response %}
+{% endswagger %}
