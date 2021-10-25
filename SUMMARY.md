@@ -9,5 +9,5 @@
 
 * [Users](resources/users/README.md)
   * [Permissions and badges](resources/users/permissions-and-badges.md)
-* [Communities](resources/endpoints/README.md)
-  * [Community kinds](resources/endpoints/community-kinds.md)
+* [Communities](resources/communities/README.md)
+  * [Community kinds](resources/communities/community-kinds.md)
