@@ -122,3 +122,12 @@ Authentication token to acknowledge who is deleting the user
 ```
 {% endswagger-response %}
 {% endswagger %}
+
+## Permissions
+
+| Name                 | Value    | Description                                                                     |
+| -------------------- | -------- | ------------------------------------------------------------------------------- |
+| `MANAGE_RESOURCES`   | `1 << 0` | <p>This permission allows user to</p><p>manage non-owned communities</p>        |
+| `MANAGE_USERS`       | `1 << 1` | <p>This permission allows user to</p><p>manage user's info. Except password</p> |
+| `MANAGE_PERMISSIONS` | `1 << 2` | <p>This permission allows user to</p><p>change other user's permissions</p>     |
+

@@ -7,7 +7,5 @@
 
 ## Resources
 
-* [Users](resources/users/README.md)
-  * [Permissions and badges](resources/users/permissions-and-badges.md)
-* [Communities](resources/communities/README.md)
-  * [Community kinds](resources/communities/community-kinds.md)
+* [Users](resources/users.md)
+* [Communities](resources/communities.md)
