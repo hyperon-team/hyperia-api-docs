@@ -7,5 +7,6 @@
 
 ## Resources
 
+* [CDN](resources/cdn.md)
 * [Users](resources/users.md)
 * [Communities](resources/communities.md)
